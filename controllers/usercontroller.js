@@ -1,8 +1,17 @@
-const user=require('../users.json')
+const users=require('../users.json')
 
 const getAllUsers=(req,res)=>{
     try {        
-        res.json(user);
+        res.json(users);
+    } catch (error) {
+        console.log(error);        
+    }
+}
+const getUserById=(req,res)=>{
+    try {        
+        let id=Number(req.params.id);
+        let IdUser=users.find(user=>user.id===id)
+        res.json(IdUser);
     } catch (error) {
         console.log(error);        
     }
@@ -10,5 +19,6 @@ const getAllUsers=(req,res)=>{
 
 module.exports={
     getAllUsers,
+    getUserById,
 
 }
